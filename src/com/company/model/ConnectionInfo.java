@@ -9,7 +9,7 @@ public class ConnectionInfo implements Comparable<ConnectionInfo> {
     public ConnectionInfo() {
     }
 
-    public ConnectionInfo(Integer sessionID, String userIP, long time, User user) {
+    public ConnectionInfo(Integer sessionID, String userIP, Long time, User user) {
         this.user = user;
         this.sessionID = sessionID;
         this.userIP = userIP;
