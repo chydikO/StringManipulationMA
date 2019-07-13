@@ -53,11 +53,36 @@ class ConnectionInfoServiceTest {
 
         String inputText = "1562843320435 9021654 142.174.109 OvUOnjlYoM fqM3gCba0ESS 17788\n";
         Queue<ConnectionInfo> resultConnections = ConnectionInfoService.getConnectionsFromText(inputText);
-        assertTrue(expectedConnections.equals(resultConnections));
+        ConnectionInfo connectionInfoFromResultConnections = resultConnections.remove();
+        ConnectionInfo connectionInfoExpected = expectedConnections.remove();
+
+        assertTrue(connectionInfoExpected.getUser().equals(connectionInfoFromResultConnections.getUser()));
+        assertTrue(connectionInfoExpected.getTime().equals(connectionInfoFromResultConnections.getTime()));
+        assertTrue(connectionInfoExpected.getSessionID().equals(connectionInfoFromResultConnections.getSessionID()));
+        assertTrue(connectionInfoExpected.getUserIP().equals(connectionInfoFromResultConnections.getUserIP()));
+
+
     }
 
 
     @Test
     void testFilterConnectionsByTime() {
+        Queue<ConnectionInfo> expectedConnections = new PriorityQueue<>();
+        User user = new User(17788, "OvUOnjlYoM", "fqM3gCba0ESS");
+        ConnectionInfo connectionInfo = new ConnectionInfo( 9021654,
+                "142.174.109",  1562843320435L, user);
+        expectedConnections.add(connectionInfo);
+
+        user = new User(99958, "ImaCFkc4Hm", "HA7g58dLlIdG");
+        connectionInfo = new ConnectionInfo( 5288721, "169.238.191",1562947877212L, user);
+        expectedConnections.add(connectionInfo);
+
+        logger.info("   xsxs ");
+        /* 1562970915882 2744936 225.156.219 hvdk6g0wzn T2bTynqq1ohq 72426
+        1562986205111 8012199 197.122.209 XcktVVNJ3a q1lmjE36MLyv 64864
+        1562988460568 6754895 252.228.199 Mop8cOJTGT IaJNQAt2061H 79592
+        1562989684349 5760522 141.233.139 adv8mq4QWM eawrQY1CZ28E 61724
+        1563002157365 5733387 106.244.245 TD2OYK88Em f5R4oPBQJa4e 34695
+        */
     }
 }

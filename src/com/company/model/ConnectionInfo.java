@@ -4,7 +4,7 @@ public class ConnectionInfo implements Comparable<ConnectionInfo> {
     private User user;
     private Integer sessionID;
     private String userIP;
-    private long time;
+    private Long time;
 
     public ConnectionInfo() {
     }
@@ -40,7 +40,7 @@ public class ConnectionInfo implements Comparable<ConnectionInfo> {
         this.userIP = userIP;
     }
 
-    public long getTime() {
+    public Long getTime() {
         return time;
     }
 
@@ -63,4 +63,6 @@ public class ConnectionInfo implements Comparable<ConnectionInfo> {
         return time + " " + sessionID + " " + userIP + " " + user.getLogin() +
                 " " + user.getPassword() + " " + user.getId();
     }
+
+
 }
