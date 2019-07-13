@@ -45,7 +45,10 @@ public class ConnectionInfoService {
             String[] words = line.split(" ");
             User user = new User(Integer.valueOf(words[5]), words[3], words[4]);
 
-            ConnectionInfo connectionInfo = new ConnectionInfo(Integer.valueOf(words[1]), words[2], Long.valueOf(words[0]), user);
+            ConnectionInfo connectionInfo = new ConnectionInfo(
+                                                                Integer.valueOf(words[1]),
+                                                                words[2],
+                                                                Long.valueOf(words[0]), user);
             connections.add(connectionInfo);
         }
         return connections;
@@ -59,5 +62,14 @@ public class ConnectionInfoService {
             }
         }
         return connections;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Queue<ConnectionInfo> connections = (PriorityQueue<ConnectionInfo>)obj;
+        for (ConnectionInfo connectionInfo: connections) {
+            if (connections.equals(this)){
+        }
+        return super.equals(obj);
     }
 }
