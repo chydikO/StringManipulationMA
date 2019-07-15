@@ -27,10 +27,10 @@ class ConnectionInfoServiceTest {
         User user = new User(17788, "OvUOnjlYoM", "fqM3gCba0ESS");
 
         ConnectionInfo connectionInfo = new ConnectionInfo( 9021654,
-                "142.174.109",  1562843320435L, user);
+                "142.174.109.110",  1562843320435L, user);
         connections.add(connectionInfo);
 
-        String expectedText = "1562843320435 9021654 142.174.109 OvUOnjlYoM fqM3gCba0ESS 17788\n";
+        String expectedText = "1562843320435 9021654 142.174.109.110 OvUOnjlYoM fqM3gCba0ESS 17788\n";
         String resultText = ConnectionInfoService.getConnectionsAsText(connections);
         assertEquals(expectedText, resultText);
         logger.info("123");
@@ -48,10 +48,10 @@ class ConnectionInfoServiceTest {
         Queue<ConnectionInfo> expectedConnections = new PriorityQueue<>();
         User user = new User(17788, "OvUOnjlYoM", "fqM3gCba0ESS");
         ConnectionInfo connectionInfo = new ConnectionInfo( 9021654,
-                "142.174.109",  1562843320435L, user);
+                "142.174.109.110",  1562843320435L, user);
         expectedConnections.add(connectionInfo);
 
-        String inputText = "1562843320435 9021654 142.174.109 OvUOnjlYoM fqM3gCba0ESS 17788\n";
+        String inputText = "1562843320435 9021654 142.174.109.110 OvUOnjlYoM fqM3gCba0ESS 17788\n";
         Queue<ConnectionInfo> resultConnections = ConnectionInfoService.getConnectionsFromText(inputText);
         ConnectionInfo connectionInfoFromResultConnections = resultConnections.remove();
         ConnectionInfo connectionInfoExpected = expectedConnections.remove();
@@ -70,19 +70,19 @@ class ConnectionInfoServiceTest {
         Queue<ConnectionInfo> expectedConnections = new PriorityQueue<>();
         User user = new User(17788, "OvUOnjlYoM", "fqM3gCba0ESS");
         ConnectionInfo connectionInfo = new ConnectionInfo( 9021654,
-                "142.174.109",  1562843320435L, user);
+                "142.174.109.110",  1562843320435L, user);
         expectedConnections.add(connectionInfo);
 
         user = new User(99958, "ImaCFkc4Hm", "HA7g58dLlIdG");
-        connectionInfo = new ConnectionInfo( 5288721, "169.238.191",1562947877212L, user);
+        connectionInfo = new ConnectionInfo( 5288721, "169.238.191.110",1562947877212L, user);
         expectedConnections.add(connectionInfo);
 
+        user = new User(72426, "hvdk6g0wzn", "T2bTynqq1ohq");
+        connectionInfo = new ConnectionInfo( 2744936, "225.156.219.112",1562970915882L, user);
+        expectedConnections.add(connectionInfo);
+
+        Queue<ConnectionInfo> resultConnection = ConnectionInfoService.filterConnectionsByTime(expectedConnections, 1562947877210L, 1562947877215L);
+
         logger.info("   xsxs ");
-        /* 1562970915882 2744936 225.156.219 hvdk6g0wzn T2bTynqq1ohq 72426
-        1562986205111 8012199 197.122.209 XcktVVNJ3a q1lmjE36MLyv 64864
-        1562988460568 6754895 252.228.199 Mop8cOJTGT IaJNQAt2061H 79592
-        1562989684349 5760522 141.233.139 adv8mq4QWM eawrQY1CZ28E 61724
-        1563002157365 5733387 106.244.245 TD2OYK88Em f5R4oPBQJa4e 34695
-        */
     }
 }

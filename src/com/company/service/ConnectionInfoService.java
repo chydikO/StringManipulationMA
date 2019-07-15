@@ -16,6 +16,7 @@ public class ConnectionInfoService {
             Integer sessionID = Randomazer.getRandomNumber(1_000_000, 9_999_999);
             String userID = Randomazer.getRandomNumber(100, 255) + "." +
                     Randomazer.getRandomNumber(100, 255) + "." +
+                    Randomazer.getRandomNumber(100, 255) + "." +
                     Randomazer.getRandomNumber(100, 255);
 
             long time = new Date().getTime() - Randomazer.getRandomNumber(0, 1000 * 60 * 60 * 24);
